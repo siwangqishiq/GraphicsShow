@@ -51,8 +51,44 @@ void drawLinePointcut(float x1,float y1,float x2,float y2,const Color color)
         y = (int)(value_y + 0.5f);
         drawPoint(x,y,color);
     }//end for x
-    
 }
+
+//  DDA draw line  
+//  数值微分算法 绘制直线段
+void drawLineDDA(float x1,float y1,float x2,float y2,const Color color)
+{
+	float start_x,start_y,end_x,end_y;
+	float cur_x,cur_y;
+	float pre_y;
+	int x,y;
+	float k = 0;
+	if(x2 < x1)//起始点判定  需从左往右绘制
+	{
+		start_x = x2;
+		start_y = y2;
+		end_x = x1;
+		end_y = y1;
+	}else{
+		start_x = x1;
+		start_y = y1;
+		end_x = x2;
+		end_y = y2;
+	}//end if
+	k = (end_y - start_y)/(end_x - start_x);
+	cur_y = start_y;
+	for(cur_x = start_x ; cur_x <= end_x ; cur_x++)
+	{
+		x = (int)(cur_x + 0.5f);
+		y = (int)(cur_y + 0.5f);
+		drawPoint(x , y ,color);
+
+		//caculate next cur_p
+		pre_y = cur_y;
+		cur_y = pre_y + k;
+	}//end for x
+}
+Color blueColor = {255,100,255};
+Color color2 = {100,100,100};
 
 void display()
 {
@@ -65,6 +101,10 @@ void display()
 //    drawPoint(WIDTH/2, HEIGHT/2, color);
     
     drawLinePointcut(100,100,900,460,color);
+	drawLineDDA(100,100,500,480,blueColor);
+	drawLineDDA(600,100,200,480,blueColor);
+	drawLineDDA(100,600,2000,500,color2);
+
     glutSwapBuffers();
     //glutPostRedisplay();
 }
