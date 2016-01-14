@@ -59,7 +59,6 @@ void drawLineDDA(float x1,float y1,float x2,float y2,const Color color)
 {
 	float start_x,start_y,end_x,end_y;
 	float cur_x,cur_y;
-	float pre_y;
 	int x,y;
 	float k = 0;
 	if(x2 < x1)//起始点判定  需从左往右绘制
@@ -83,8 +82,7 @@ void drawLineDDA(float x1,float y1,float x2,float y2,const Color color)
 		drawPoint(x , y ,color);
 
 		//caculate next cur_p
-		pre_y = cur_y;
-		cur_y = pre_y + k;
+		cur_y += k;
 	}//end for x
 }
 Color blueColor = {255,100,255};

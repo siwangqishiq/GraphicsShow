@@ -24,11 +24,11 @@ void handleKeyInput(unsigned char key, int x, int y)
 
 void drawPoint(int x, int y, const Color color)
 {
+	float x_value = (float)x;
+    float y_value = (float)y;
     //glPointSize(8.0);设置点的大小
     glColor3f(color.r / 255, color.g / 255, color.b / 255);//指定点的颜色
     //计算Opengl坐标
-    float x_value = (float)x;
-    float y_value = (float)y;
     x_value = 2 * x_value / WIDTH - 1;
     y_value = 2 * y_value / HEIGHT - 1;
     glBegin(GL_POINTS);//开始画点

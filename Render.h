@@ -9,12 +9,13 @@
 #ifndef __Graphics__Render__
 #define __Graphics__Render__
 
-//#include <gl\glut.h>
+#include <stdlib.h>
+#include <gl\glut.h>
 
 //this for OSX
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <GLUT/glut.h>
+//#include <OpenGL/gl.h>
+//#include <OpenGL/glu.h>
+//#include <GLUT/glut.h>
 
 #define WIDTH       1000
 #define HEIGHT      800
